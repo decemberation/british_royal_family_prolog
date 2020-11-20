@@ -144,7 +144,12 @@ aunt(Person, NieceNephew) :-
     married(Person, Y),
     male(Y),
     brother(Y, Z),
-    parent(Z, NieceNephew)).
+    parent(Z, NieceNephew));
+    (female(Person),
+    married(Person, Someone),
+    sibling(P1, P2),
+    (parent(P1, Someone), parent(P2, SomeoneElse)),
+    parent(SomeoneElse, NieceNephew)).
 uncle(Person, NieceNephew) :-
     (male(Person),
     parent(X, NieceNephew),
@@ -153,7 +158,12 @@ uncle(Person, NieceNephew) :-
     married(Person, Y),
     female(Y),
     sister(Y, Z),
-    parent(Z, NieceNephew)).
+    parent(Z, NieceNephew));
+    (male(Person),
+    married(Person, Someone),
+    sibling(P1, P2),
+    (parent(P1, Someone), parent(P2, SomeoneElse)),
+    parent(SomeoneElse, NieceNephew)).
 niece(Person, AuntUncle) :-
     (uncle(AuntUncle, Person); aunt(AuntUncle, Person)),
     female(Person).

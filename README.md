@@ -1,6 +1,6 @@
 # british_royal_family_prolog
 This is the Prolog language implementation for defining relations between members of the British Royal Family.\
-Here are the predicates and facts I have already defined:
+Here are the predicates and facts I have already defined:\
   parent(Parent,Child)\
   male(Person)\
   married(Person, Person)\

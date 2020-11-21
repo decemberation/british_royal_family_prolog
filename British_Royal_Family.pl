@@ -127,9 +127,9 @@ granddaughter(GD, GP) :-
     female(GD),
     grandchild(GD, GP).
 sibling(Person1, Person2) :-
-    parent(X, Person1),
-    parent(X, Person2),
-    Person1\=Person2.
+  setof((Person1,Person2), P^(parent(P,Person1),parent(P,Person2), \+Person1=Person2), Sibs),
+  member((Person1,Person2), Sibs),
+  \+ (Person2@<Person1, member((Person2,Person1), Sibs)).
 brother(Person, Sibling) :-
     male(Person),
     sibling(Person, Sibling).
